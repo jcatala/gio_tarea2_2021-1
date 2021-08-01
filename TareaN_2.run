@@ -1,0 +1,30 @@
+reset;
+
+
+model TareaN_2.mod;
+data TareaN_2.dat;
+
+option solver MINOS;
+
+load amplgsl.dll;
+
+
+set OBS := 1..32;
+
+for {obs in OBS} 
+
+{
+	let alfa_L := alfa_L_a[obs];
+	let S := S_a[obs];
+	let h := h_a[obs];
+	let mu := mu_a[obs];
+	let sigma := sigma_a[obs];
+	let L := L_a[obs];
+	
+	solve;
+	
+	printf "Observacion = %f Funcion objetivo optima (Z*) = %f, Q* = %f, r* = %f\n", obs, costos, Q, r;
+	
+	printf "El tiempo que tomo la interacion %f fue de %f segundos\n", obs, _ampl_time
+	
+}
