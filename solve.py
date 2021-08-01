@@ -172,7 +172,7 @@ if __name__ == "__main__":
     try:
         startTime = time.time()
         solve()
-        print("The entire process took %f seconds" % (startTime - time.time()))
+        print("The entire process took %f seconds" % (time.time() - startTime ))
     except KeyboardInterrupt:
         print("\nExit flawlessly")
         exit(0)
